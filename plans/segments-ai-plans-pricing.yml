@@ -1,0 +1,151 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Segments.ai
+providerId: segments-ai
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Data Labeling
+- Computer Vision
+- Point Cloud
+- Annotation
+- Machine Learning
+- Plans
+description: >-
+  Segments.ai is sold as an annual platform subscription priced primarily on
+  annual labeling-hour usage rather than per-API-call metering. Published tiers
+  are Core (entry annual plan with a stated annual price and hourly rate),
+  Fusion (multi-sensor fusion, webhooks, larger usage, custom quote), and
+  Enterprise (custom interfaces and security, very large usage, custom quote).
+  Academic and startup programs are available on request. The same REST API and
+  Python SDK are available across plans; API access is not separately metered.
+notes: >-
+  Pricing reflects the public Segments.ai pricing page at capture time and is
+  subject to change; Fusion and Enterprise are custom-quoted. Exact included
+  hours, seat counts, and overage rates beyond those listed are not publicly
+  itemized, so values are not reconciled here.
+sources:
+- https://segments.ai/pricing
+- https://docs.segments.ai
+plans:
+- id: segments-ai-core
+  name: Core
+  type: subscription
+  description: >-
+    Entry annual platform plan with image and point cloud labeling interfaces,
+    ML-powered labeling tools, cloud integrations, active learning, and QA
+    management. Unlimited seats and projects.
+  entries:
+  - label: Annual Subscription
+    name: core_annual
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $9,600 per year (approx., as published)
+    userMultiplied: false
+  - label: Labeling Hours
+    name: core_hours
+    type: usage
+    metric: hours
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: approx. $2.67 per hour, starting at 3,600 hours/year
+    userMultiplied: false
+  - label: Points Per Cloud
+    name: core_points_per_cloud
+    type: flat
+    metric: points
+    limit: 500000
+    timeFrame: usage
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Image Segmentation Interfaces
+  - name: Point Cloud Interfaces
+  - name: ML-Powered Labeling
+  - name: Cloud Integrations
+  - name: Active Learning
+  - name: QA Management
+  - name: REST API and Python SDK
+- id: segments-ai-fusion
+  name: Fusion
+  type: subscription
+  description: >-
+    All Core features plus multi-sensor fusion interfaces, unlimited file
+    sizes, extensive integrations, webhooks, priority support, a metrics
+    dashboard, and access to a labeling workforce. Custom annual quote.
+  entries:
+  - label: Annual Subscription
+    name: fusion_annual
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: custom quote
+    userMultiplied: false
+  - label: Labeling Hours
+    name: fusion_hours
+    type: usage
+    metric: hours
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: starting at 5,000 hours/year
+    userMultiplied: false
+  elements:
+  - name: Multi-Sensor Fusion Interfaces
+  - name: Unlimited File Sizes
+  - name: Webhooks
+  - name: Priority Support
+  - name: Metrics Dashboard
+  - name: Labeling Workforce Access
+- id: segments-ai-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    All Fusion capabilities plus custom interfaces, custom pipelines, roadmap
+    influence, custom security with SSO/MFA, a dedicated ML engineer, and
+    tailored dashboards. Very large usage commitments. Custom annual quote.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  - label: Labeling Hours
+    name: enterprise_hours
+    type: usage
+    metric: hours
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: includes 150,000+ hours/year
+    userMultiplied: false
+  elements:
+  - name: Custom Interfaces
+  - name: Custom Pipelines
+  - name: Custom Security (SSO/MFA)
+  - name: Dedicated ML Engineer
+  - name: Tailored Dashboards
+  - name: Roadmap Influence
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

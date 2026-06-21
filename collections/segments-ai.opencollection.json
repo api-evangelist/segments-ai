@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segments.ai API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "Authorization",
+        "value": "APIKey {{apiKey}}",
+        "in": "header"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Datasets", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List my datasets", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.segments.ai/user/datasets" },
+          "docs": "List the authenticated user's datasets."
+        },
+        {
+          "info": { "name": "List user datasets", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.segments.ai/users/{owner}/datasets" },
+          "docs": "List the datasets owned by a given user or organization."
+        },
+        {
+          "info": { "name": "Create dataset", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.segments.ai/user/datasets", "body": { "type": "json", "data": "{\"name\":\"my-dataset\",\"category\":\"other\",\"task_type\":\"segmentation-bitmap\",\"task_attributes\":{}}" } },
+          "docs": "Create a new dataset."
+        },
+        {
+          "info": { "name": "Get dataset", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.segments.ai/datasets/{owner}/{dataset}" },
+          "docs": "Retrieve a single dataset."
+        },
+        {
+          "info": { "name": "Update dataset", "type": "http" },
+          "http": { "method": "PATCH", "url": "https://api.segments.ai/datasets/{owner}/{dataset}", "body": { "type": "json", "data": "{\"description\":\"updated\"}" } },
+          "docs": "Update a dataset."
+        },
+        {
+          "info": { "name": "Delete dataset", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.segments.ai/datasets/{owner}/{dataset}" },
+          "docs": "Delete a dataset."
+        },
+        {
+          "info": { "name": "Add collaborator", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/collaborators", "body": { "type": "json", "data": "{\"user\":\"username\",\"role\":\"labeler\"}" } },
+          "docs": "Add a collaborator to a dataset."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Samples", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List samples", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/samples" },
+          "docs": "List the samples in a dataset."
+        },
+        {
+          "info": { "name": "Create sample", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/samples", "body": { "type": "json", "data": "{\"name\":\"sample-001\",\"attributes\":{}}" } },
+          "docs": "Create a sample in a dataset."
+        },
+        {
+          "info": { "name": "Get sample", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.segments.ai/samples/{sample_uuid}" },
+          "docs": "Retrieve a single sample."
+        },
+        {
+          "info": { "name": "Update sample", "type": "http" },
+          "http": { "method": "PATCH", "url": "https://api.segments.ai/samples/{sample_uuid}", "body": { "type": "json", "data": "{\"priority\":10}" } },
+          "docs": "Update a sample."
+        },
+        {
+          "info": { "name": "Delete sample", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.segments.ai/samples/{sample_uuid}" },
+          "docs": "Delete a sample."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Labels", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get label", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.segments.ai/labels/{sample_uuid}/{labelset}" },
+          "docs": "Retrieve the label for a sample in a given labelset."
+        },
+        {
+          "info": { "name": "Create or update label", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.segments.ai/labels/{sample_uuid}/{labelset}", "body": { "type": "json", "data": "{\"attributes\":{},\"label_status\":\"LABELED\"}" } },
+          "docs": "Create or update the label for a sample in a given labelset."
+        },
+        {
+          "info": { "name": "Delete label", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.segments.ai/labels/{sample_uuid}/{labelset}" },
+          "docs": "Delete the label for a sample in a given labelset."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Labelsets", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List labelsets", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/labelsets" },
+          "docs": "List the labelsets in a dataset."
+        },
+        {
+          "info": { "name": "Create labelset", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/labelsets", "body": { "type": "json", "data": "{\"name\":\"model-predictions\"}" } },
+          "docs": "Create a labelset in a dataset."
+        },
+        {
+          "info": { "name": "Get labelset", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/labelsets/{name}" },
+          "docs": "Retrieve a single labelset."
+        },
+        {
+          "info": { "name": "Delete labelset", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/labelsets/{name}" },
+          "docs": "Delete a labelset."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Releases", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List releases", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/releases" },
+          "docs": "List the releases of a dataset."
+        },
+        {
+          "info": { "name": "Create release", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/releases", "body": { "type": "json", "data": "{\"name\":\"v1.0\",\"description\":\"first release\"}" } },
+          "docs": "Create a release (immutable snapshot) of a dataset."
+        },
+        {
+          "info": { "name": "Get release", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/releases/{release_name}" },
+          "docs": "Retrieve a single release."
+        },
+        {
+          "info": { "name": "Delete release", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.segments.ai/datasets/{owner}/{dataset}/releases/{release_name}" },
+          "docs": "Delete a release."
+        }
+      ]
+    }
+  ]
+}

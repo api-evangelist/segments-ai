@@ -1,0 +1,98 @@
+aid: segments-ai
+name: Segments.ai
+review:
+  question: Does Segments.ai expose a documented public WebSocket or streaming API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Segments.ai's documented public API is
+    REST-only over HTTPS at https://api.segments.ai, complemented by a Python
+    SDK. No WebSocket (ws://, wss://) or HTTP Server-Sent Events (SSE) stream
+    is documented in the API reference or SDK. Segments.ai does offer outbound
+    webhooks on higher tiers (Fusion/Enterprise) for event notifications, but
+    webhooks are provider-to-client HTTP callbacks, not a client-consumable
+    streaming/event-driven API surface, so no AsyncAPI was modeled under
+    current scope.
+findings:
+  summary: |
+    Segments.ai does not publish a documented public WebSocket or SSE streaming
+    API. The platform exposes a synchronous REST API under
+    https://api.segments.ai, authenticated with an account API key sent in the
+    Authorization header using the APIKey scheme (Authorization: APIKey
+    YOUR_API_KEY). The same surface is wrapped by the official Python SDK
+    (segments-ai). Real-time delivery to customer systems is offered via
+    outbound webhooks on Fusion and Enterprise tiers, which are HTTP callbacks
+    rather than a bidirectional or subscribe-style streaming API.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.segments.ai
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      documented: true
+      note: Outbound HTTP event callbacks available on Fusion/Enterprise tiers; provider-to-client, not a consumable streaming API.
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events stream is documented for any endpoint.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the Segments.ai API reference or Python SDK as of the review date.
+  authentication:
+    scheme: APIKey
+    location: header
+    header: Authorization
+    format: 'APIKey YOUR_API_KEY'
+  endpointsConfirmedRest:
+    - GET    https://api.segments.ai/user/datasets
+    - POST   https://api.segments.ai/user/datasets
+    - GET    https://api.segments.ai/users/{owner}/datasets
+    - GET    https://api.segments.ai/datasets/{owner}/{dataset}
+    - PATCH  https://api.segments.ai/datasets/{owner}/{dataset}
+    - DELETE https://api.segments.ai/datasets/{owner}/{dataset}
+    - POST   https://api.segments.ai/datasets/{owner}/{dataset}/collaborators
+    - GET    https://api.segments.ai/datasets/{owner}/{dataset}/samples
+    - POST   https://api.segments.ai/datasets/{owner}/{dataset}/samples
+    - GET    https://api.segments.ai/samples/{sample_uuid}
+    - PATCH  https://api.segments.ai/samples/{sample_uuid}
+    - DELETE https://api.segments.ai/samples/{sample_uuid}
+    - GET    https://api.segments.ai/labels/{sample_uuid}/{labelset}
+    - PUT    https://api.segments.ai/labels/{sample_uuid}/{labelset}
+    - DELETE https://api.segments.ai/labels/{sample_uuid}/{labelset}
+    - GET    https://api.segments.ai/datasets/{owner}/{dataset}/labelsets
+    - POST   https://api.segments.ai/datasets/{owner}/{dataset}/labelsets
+    - GET    https://api.segments.ai/datasets/{owner}/{dataset}/labelsets/{name}
+    - DELETE https://api.segments.ai/datasets/{owner}/{dataset}/labelsets/{name}
+    - GET    https://api.segments.ai/datasets/{owner}/{dataset}/releases
+    - POST   https://api.segments.ai/datasets/{owner}/{dataset}/releases
+    - GET    https://api.segments.ai/datasets/{owner}/{dataset}/releases/{release_name}
+    - DELETE https://api.segments.ai/datasets/{owner}/{dataset}/releases/{release_name}
+sources:
+  - url: https://docs.segments.ai/reference/api
+    type: APIReference
+    note: Lists REST base URL https://api.segments.ai with APIKey header auth; no WebSocket or SSE mentioned.
+  - url: https://docs.segments.ai/background/main-concepts
+    type: Documentation
+    note: Describes datasets, samples, labels, labelsets, releases, and task types; no streaming surface.
+  - url: https://sdkdocs.segments.ai/en/latest/client.html
+    type: Documentation
+    note: Python SDK client methods wrap the REST endpoints; no streaming/WebSocket client.
+  - url: https://github.com/segments-ai/segments-ai
+    type: GitHub
+    note: Official Python SDK repository for the REST API.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE streaming surface exists. Outbound webhooks are a
+    provider-to-client callback mechanism rather than a consumable streaming
+    API, so no AsyncAPI document was authored under current scope. The apis.yml
+    catalogs the five REST sub-APIs (Datasets, Samples, Labels, Labelsets,
+    Releases) with an OpenAPI 3.0.1 description of the documented endpoints.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

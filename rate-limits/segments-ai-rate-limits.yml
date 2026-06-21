@@ -1,0 +1,59 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Segments.ai
+providerId: segments-ai
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Data Labeling
+- Computer Vision
+- Point Cloud
+- Annotation
+- Machine Learning
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Segments.ai REST API is authenticated with an account API key sent in the
+  Authorization header (APIKey scheme). Segments.ai does not publish explicit
+  numeric per-key rate limits for the REST API; the platform is sold on annual
+  labeling-hour usage rather than per-request quotas. Clients should still
+  expect throttling on bursty traffic and handle HTTP 429 responses. The
+  Python SDK paginates large list operations (samples, releases, workunits)
+  rather than returning unbounded result sets. Specific request-per-minute
+  values are not reconciled in this artifact.
+notes: >-
+  No public numeric REST rate limits were found at capture time. Verify any
+  per-key throttling and recommended backoff with Segments.ai support or the
+  account dashboard during reconciliation.
+sources:
+- https://docs.segments.ai/reference/api
+- https://sdkdocs.segments.ai/en/latest/client.html
+responseCodes:
+  throttled: 429
+limits:
+- name: REST Requests
+  scope: api-key
+  metric: requests
+  limit: see provider documentation
+  notes: No public numeric per-key request rate limit is documented; expect throttling on bursty traffic.
+- name: Sample / Release Pagination
+  scope: api-key
+  metric: results
+  limit: paginated
+  notes: List endpoints (samples, releases, workunits) are paginated; iterate pages rather than expecting unbounded responses.
+- name: Asset Upload
+  scope: api-key
+  metric: uploads
+  limit: see provider documentation
+  notes: Asset uploads go to Segments.ai-managed storage; large or bulk uploads may be throttled.
+policies:
+- name: Usage-Based Subscription
+  description: Platform usage is governed by the annual labeling-hour subscription tier rather than per-request API quotas.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on HTTP 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,100 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Segments.ai
+providerId: segments-ai
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Data Labeling
+- Computer Vision
+- Point Cloud
+- Annotation
+- Machine Learning
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Segments.ai spend. Segments.ai bills as an annual platform
+  subscription whose primary cost driver is labeling-hours consumed per year
+  (Core, Fusion, Enterprise tiers), with unlimited seats and projects. The REST
+  API and Python SDK are not separately metered, so API-side cost optimization
+  focuses on controlling how much paid labeling work is generated - dataset
+  scope, sample volume, prelabeling/active learning to reduce manual hours, and
+  reuse of releases - rather than on per-call charges.
+notes: >-
+  Per-hour and included-hours figures reflect the public pricing page at
+  capture time and are subject to negotiation for Fusion/Enterprise; verify
+  committed hours and overage terms with Segments.ai during reconciliation.
+sources:
+- https://segments.ai/pricing
+- https://docs.segments.ai
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Segments.ai
+serviceCategory: AI and Machine Learning
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Segments.ai
+  ServiceCategory: AI and Machine Learning
+  ProviderName: Segments.ai
+  PublisherName: Segments.ai
+  InvoiceIssuerName: Segments.ai
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription-Based
+meters:
+- name: annual_subscription
+  description: Annual platform subscription fee for the selected plan tier (Core, Fusion, Enterprise).
+  unit: subscription
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: labeling_hours
+  description: Labeling-hours consumed against the annual usage allotment; the primary variable cost driver.
+  unit: hours
+  aggregation: sum
+  dimensions:
+  - account
+  - dataset
+  - plan
+- name: points_per_cloud
+  description: Point count per point cloud processed; capped per tier (e.g., up to 500,000 on Core).
+  unit: points
+  aggregation: sum
+  dimensions:
+  - account
+  - dataset
+- name: stored_assets
+  description: Images, point clouds, and multi-sensor sequences uploaded to Segments.ai-managed storage.
+  unit: assets
+  aggregation: sum
+  dimensions:
+  - account
+  - dataset
+principles:
+- name: Visibility
+  description: Track labeling-hours consumed per dataset/project against the annual allotment via the metrics dashboard.
+- name: Allocation
+  description: Map datasets and projects to internal teams/cost centers; unlimited seats means per-project usage, not seats, drives cost.
+- name: Optimization
+  description: Use prelabeling, active learning, and QA workflows to cut manual labeling-hours; right-size point cloud density; reuse releases instead of re-labeling.
+- name: Accountability
+  description: Assign owners per dataset; review labeling-hour burn against the annual commitment to avoid overage on Fusion/Enterprise.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

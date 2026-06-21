@@ -1,0 +1,155 @@
+aid: segments-ai
+url: https://raw.githubusercontent.com/api-evangelist/segments-ai/refs/heads/main/apis.yml
+name: Segments.ai
+kind: company
+description: Segments.ai is a data-labeling platform for computer vision, supporting
+  2D image segmentation and vectors as well as 3D point cloud and multi-sensor fusion
+  annotation. Its REST API and Python SDK let teams manage datasets, samples, labels,
+  labelsets, and versioned releases programmatically for building training data
+  pipelines.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Data Labeling
+- Computer Vision
+- Point Cloud
+- Annotation
+- Machine Learning
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: segments-ai:datasets
+  name: Segments.ai Datasets API
+  tags:
+  - Datasets
+  - Projects
+  - Computer Vision
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.segments.ai/reference/api
+  baseURL: https://api.segments.ai
+  properties:
+  - url: https://docs.segments.ai/background/main-concepts
+    type: Documentation
+  - url: https://docs.segments.ai/reference/api
+    type: APIReference
+  - url: openapi/segments-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/segments-ai.postman_collection.json
+    type: PostmanCollection
+  - url: collections/segments-ai.opencollection.json
+    type: OpenCollection
+  - url: https://github.com/segments-ai/segments-ai
+    type: GitHub
+  description: Create, list, retrieve, update, and delete labeling datasets, including
+    their task type (image segmentation, vectors, point cloud cuboid/segmentation,
+    multi-sensor fusion), categories, task attributes, and collaborators.
+- aid: segments-ai:samples
+  name: Segments.ai Samples API
+  tags:
+  - Samples
+  - Assets
+  - Images
+  - Point Clouds
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.segments.ai/reference/api
+  baseURL: https://api.segments.ai
+  properties:
+  - url: https://docs.segments.ai/background/main-concepts
+    type: Documentation
+  - url: https://docs.segments.ai/reference/api
+    type: APIReference
+  - url: openapi/segments-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/segments-ai.postman_collection.json
+    type: PostmanCollection
+  - url: collections/segments-ai.opencollection.json
+    type: OpenCollection
+  description: Manage the individual items to be labeled within a dataset - images,
+    point clouds, and multi-sensor sequences - with attributes, metadata, and
+    labeling priority.
+- aid: segments-ai:labels
+  name: Segments.ai Labels API
+  tags:
+  - Labels
+  - Annotations
+  - Ground Truth
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.segments.ai/reference/api
+  baseURL: https://api.segments.ai
+  properties:
+  - url: https://docs.segments.ai/background/main-concepts
+    type: Documentation
+  - url: https://docs.segments.ai/reference/api
+    type: APIReference
+  - url: openapi/segments-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/segments-ai.postman_collection.json
+    type: PostmanCollection
+  - url: collections/segments-ai.opencollection.json
+    type: OpenCollection
+  description: Create, retrieve, update, and delete the annotation labels attached
+    to a sample for a given labelset, with label status (LABELED, REVIEWED,
+    REJECTED, PRELABELED, SKIPPED), attributes, and model score.
+- aid: segments-ai:labelsets
+  name: Segments.ai Labelsets API
+  tags:
+  - Labelsets
+  - Predictions
+  - Ground Truth
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.segments.ai/reference/api
+  baseURL: https://api.segments.ai
+  properties:
+  - url: https://docs.segments.ai/background/main-concepts
+    type: Documentation
+  - url: https://docs.segments.ai/reference/api
+    type: APIReference
+  - url: openapi/segments-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/segments-ai.postman_collection.json
+    type: PostmanCollection
+  - url: collections/segments-ai.opencollection.json
+    type: OpenCollection
+  description: Manage labelsets within a dataset - named groups of labels such as
+    ground-truth or model predictions - allowing multiple parallel annotation
+    sets per sample.
+- aid: segments-ai:releases
+  name: Segments.ai Releases API
+  tags:
+  - Releases
+  - Versioning
+  - Export
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.segments.ai/reference/api
+  baseURL: https://api.segments.ai
+  properties:
+  - url: https://docs.segments.ai/background/main-concepts
+    type: Documentation
+  - url: https://docs.segments.ai/reference/api
+    type: APIReference
+  - url: openapi/segments-ai-openapi.yml
+    type: OpenAPI
+  - url: collections/segments-ai.postman_collection.json
+    type: PostmanCollection
+  - url: collections/segments-ai.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, and delete versioned, immutable snapshots
+    of a dataset's labels for export and reproducible ML training.
+common:
+- type: GitHubOrganization
+  url: https://github.com/segments-ai
+- type: LinkedIn
+  url: https://www.linkedin.com/company/segments-ai
+- type: Website
+  url: https://segments.ai
+- type: Documentation
+  url: https://docs.segments.ai
+- type: Plans
+  url: plans/segments-ai-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/segments-ai-rate-limits.yml
+- type: FinOps
+  url: finops/segments-ai-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

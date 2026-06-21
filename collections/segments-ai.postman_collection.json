@@ -1,0 +1,244 @@
+{
+  "info": {
+    "_postman_id": "a1f0c2d4-7b3e-4c9a-8d21-segmentsai0001",
+    "name": "Segments.ai API",
+    "description": "REST API for the Segments.ai data-labeling platform for computer vision. Authenticate with an API key sent as `Authorization: APIKey YOUR_API_KEY`.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "Authorization" },
+      { "key": "value", "value": "APIKey {{apiKey}}" },
+      { "key": "in", "value": "header" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.segments.ai" },
+    { "key": "apiKey", "value": "" },
+    { "key": "owner", "value": "" },
+    { "key": "dataset", "value": "" },
+    { "key": "sample_uuid", "value": "" },
+    { "key": "labelset", "value": "ground-truth" },
+    { "key": "release_name", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Datasets",
+      "item": [
+        {
+          "name": "List my datasets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/user/datasets", "host": ["{{baseUrl}}"], "path": ["user", "datasets"] }
+          }
+        },
+        {
+          "name": "List user datasets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/users/{{owner}}/datasets", "host": ["{{baseUrl}}"], "path": ["users", "{{owner}}", "datasets"] }
+          }
+        },
+        {
+          "name": "Create dataset",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"my-dataset\",\n  \"description\": \"\",\n  \"category\": \"other\",\n  \"task_type\": \"segmentation-bitmap\",\n  \"task_attributes\": {},\n  \"public\": false\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/user/datasets", "host": ["{{baseUrl}}"], "path": ["user", "datasets"] }
+          }
+        },
+        {
+          "name": "Get dataset",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}"] }
+          }
+        },
+        {
+          "name": "Update dataset",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"description\": \"updated\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}"] }
+          }
+        },
+        {
+          "name": "Delete dataset",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}"] }
+          }
+        },
+        {
+          "name": "Add collaborator",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"user\": \"username\",\n  \"role\": \"labeler\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/collaborators", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "collaborators"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Samples",
+      "item": [
+        {
+          "name": "List samples",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/samples", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "samples"] }
+          }
+        },
+        {
+          "name": "Create sample",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"sample-001\",\n  \"attributes\": { \"image\": { \"url\": \"https://example.com/image.jpg\" } },\n  \"metadata\": {},\n  \"priority\": 0\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/samples", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "samples"] }
+          }
+        },
+        {
+          "name": "Get sample",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/samples/{{sample_uuid}}", "host": ["{{baseUrl}}"], "path": ["samples", "{{sample_uuid}}"] }
+          }
+        },
+        {
+          "name": "Update sample",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"priority\": 10\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/samples/{{sample_uuid}}", "host": ["{{baseUrl}}"], "path": ["samples", "{{sample_uuid}}"] }
+          }
+        },
+        {
+          "name": "Delete sample",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/samples/{{sample_uuid}}", "host": ["{{baseUrl}}"], "path": ["samples", "{{sample_uuid}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Labels",
+      "item": [
+        {
+          "name": "Get label",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/labels/{{sample_uuid}}/{{labelset}}", "host": ["{{baseUrl}}"], "path": ["labels", "{{sample_uuid}}", "{{labelset}}"] }
+          }
+        },
+        {
+          "name": "Create or update label",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"attributes\": { \"annotations\": [] },\n  \"label_status\": \"LABELED\",\n  \"score\": null\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/labels/{{sample_uuid}}/{{labelset}}", "host": ["{{baseUrl}}"], "path": ["labels", "{{sample_uuid}}", "{{labelset}}"] }
+          }
+        },
+        {
+          "name": "Delete label",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/labels/{{sample_uuid}}/{{labelset}}", "host": ["{{baseUrl}}"], "path": ["labels", "{{sample_uuid}}", "{{labelset}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Labelsets",
+      "item": [
+        {
+          "name": "List labelsets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/labelsets", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "labelsets"] }
+          }
+        },
+        {
+          "name": "Create labelset",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"model-predictions\",\n  \"description\": \"\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/labelsets", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "labelsets"] }
+          }
+        },
+        {
+          "name": "Get labelset",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/labelsets/{{labelset}}", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "labelsets", "{{labelset}}"] }
+          }
+        },
+        {
+          "name": "Delete labelset",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/labelsets/{{labelset}}", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "labelsets", "{{labelset}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Releases",
+      "item": [
+        {
+          "name": "List releases",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/releases", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "releases"] }
+          }
+        },
+        {
+          "name": "Create release",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"v1.0\",\n  \"description\": \"first release\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/releases", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "releases"] }
+          }
+        },
+        {
+          "name": "Get release",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/releases/{{release_name}}", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "releases", "{{release_name}}"] }
+          }
+        },
+        {
+          "name": "Delete release",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/datasets/{{owner}}/{{dataset}}/releases/{{release_name}}", "host": ["{{baseUrl}}"], "path": ["datasets", "{{owner}}", "{{dataset}}", "releases", "{{release_name}}"] }
+          }
+        }
+      ]
+    }
+  ]
+}
