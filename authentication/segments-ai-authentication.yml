@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/segments-ai-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: APIKey
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Send your API key in the Authorization header using the value `APIKey YOUR_API_KEY`.
+    Keys are generated in the Segments.ai account settings.
+  sources:
+  - openapi/segments-ai-openapi.yml
