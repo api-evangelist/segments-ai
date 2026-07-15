@@ -136,6 +136,8 @@ apis:
   description: Create, list, retrieve, and delete versioned, immutable snapshots
     of a dataset's labels for export and reproducible ML training.
 common:
+- type: AgenticAccess
+  url: agentic-access/segments-ai-agentic-access.yml
 - type: DomainSecurity
   url: security/segments-ai-domain-security.yml
 - type: Authentication
