@@ -1,0 +1,156 @@
+openapi: 3.0.1
+info:
+  title: Segments.ai Datasets Releases API
+  description: 'REST API for the Segments.ai data-labeling platform for computer vision. Manage datasets, samples, labels, labelsets, and versioned releases for 2D image segmentation/vectors and 3D point cloud and multi-sensor fusion annotation. Authenticate by sending an API key in the Authorization header as `Authorization: APIKey YOUR_API_KEY`.'
+  termsOfService: https://segments.ai/terms
+  contact:
+    name: Segments.ai Support
+    url: https://docs.segments.ai
+  version: '1.0'
+servers:
+- url: https://api.segments.ai
+security:
+- APIKey: []
+tags:
+- name: Releases
+paths:
+  /datasets/{owner}/{dataset}/releases:
+    get:
+      operationId: listReleases
+      tags:
+      - Releases
+      summary: List the releases of a dataset.
+      parameters:
+      - name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of releases.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Release'
+    post:
+      operationId: createRelease
+      tags:
+      - Releases
+      summary: Create a release (immutable snapshot) of a dataset.
+      parameters:
+      - name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReleaseCreate'
+      responses:
+        '201':
+          description: The created release.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Release'
+  /datasets/{owner}/{dataset}/releases/{release_name}:
+    get:
+      operationId: getRelease
+      tags:
+      - Releases
+      summary: Retrieve a single release.
+      parameters:
+      - name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: release_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The release.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Release'
+    delete:
+      operationId: deleteRelease
+      tags:
+      - Releases
+      summary: Delete a release.
+      parameters:
+      - name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: release_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Release deleted.
+components:
+  schemas:
+    ReleaseCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    Release:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        attributes:
+          type: object
+          description: Release metadata including the signed download URL of the export.
+        created_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    APIKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Send your API key in the Authorization header using the value `APIKey YOUR_API_KEY`. Keys are generated in the Segments.ai account settings.

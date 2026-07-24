@@ -1,0 +1,143 @@
+openapi: 3.0.1
+info:
+  title: Segments.ai Datasets Labels API
+  description: 'REST API for the Segments.ai data-labeling platform for computer vision. Manage datasets, samples, labels, labelsets, and versioned releases for 2D image segmentation/vectors and 3D point cloud and multi-sensor fusion annotation. Authenticate by sending an API key in the Authorization header as `Authorization: APIKey YOUR_API_KEY`.'
+  termsOfService: https://segments.ai/terms
+  contact:
+    name: Segments.ai Support
+    url: https://docs.segments.ai
+  version: '1.0'
+servers:
+- url: https://api.segments.ai
+security:
+- APIKey: []
+tags:
+- name: Labels
+paths:
+  /labels/{sample_uuid}/{labelset}:
+    get:
+      operationId: getLabel
+      tags:
+      - Labels
+      summary: Retrieve the label for a sample in a given labelset.
+      parameters:
+      - name: sample_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: labelset
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The label.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Label'
+    put:
+      operationId: upsertLabel
+      tags:
+      - Labels
+      summary: Create or update the label for a sample in a given labelset.
+      parameters:
+      - name: sample_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: labelset
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelUpsert'
+      responses:
+        '200':
+          description: The created or updated label.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Label'
+    delete:
+      operationId: deleteLabel
+      tags:
+      - Labels
+      summary: Delete the label for a sample in a given labelset.
+      parameters:
+      - name: sample_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: labelset
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Label deleted.
+components:
+  schemas:
+    Label:
+      type: object
+      properties:
+        sample_uuid:
+          type: string
+          format: uuid
+        labelset:
+          type: string
+        label_type:
+          type: string
+        label_status:
+          type: string
+          enum:
+          - LABELED
+          - REVIEWED
+          - REJECTED
+          - PRELABELED
+          - SKIPPED
+        attributes:
+          type: object
+          description: The annotation payload (segmentation, vectors, cuboids, etc.).
+        score:
+          type: number
+          description: Optional model confidence score for prelabels.
+        created_at:
+          type: string
+          format: date-time
+    LabelUpsert:
+      type: object
+      required:
+      - attributes
+      properties:
+        attributes:
+          type: object
+        label_status:
+          type: string
+          enum:
+          - LABELED
+          - REVIEWED
+          - REJECTED
+          - PRELABELED
+          - SKIPPED
+        score:
+          type: number
+  securitySchemes:
+    APIKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Send your API key in the Authorization header using the value `APIKey YOUR_API_KEY`. Keys are generated in the Segments.ai account settings.
