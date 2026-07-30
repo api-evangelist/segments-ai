@@ -7,7 +7,20 @@ description: Segments.ai is a data-labeling platform for computer vision, suppor
   annotation. Its REST API and Python SDK let teams manage datasets, samples, labels,
   labelsets, and versioned releases programmatically for building training data
   pipelines.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/segments-ai.png
 tags:
 - Data Labeling
 - Computer Vision
@@ -18,123 +31,106 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: segments-ai:datasets
+- aid: segments-ai:segments-ai-datasets-api
   name: Segments.ai Datasets API
+  description: The Datasets API from Segments.ai — 4 operation(s) for datasets.
+  humanURL: https://docs.segments.ai/reference/api
+  baseURL: https://api.segments.ai
   tags:
   - Datasets
-  - Projects
-  - Computer Vision
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.segments.ai/reference/api
-  baseURL: https://api.segments.ai
   properties:
-  - url: https://docs.segments.ai/background/main-concepts
-    type: Documentation
-  - url: https://docs.segments.ai/reference/api
-    type: APIReference
-  - url: openapi/segments-ai-openapi.yml
-    type: OpenAPI
-  - url: collections/segments-ai.postman_collection.json
-    type: PostmanCollection
-  - url: collections/segments-ai.opencollection.json
-    type: OpenCollection
-  - url: https://github.com/segments-ai/segments-ai
-    type: GitHub
-  description: Create, list, retrieve, update, and delete labeling datasets, including
-    their task type (image segmentation, vectors, point cloud cuboid/segmentation,
-    multi-sensor fusion), categories, task attributes, and collaborators.
-- aid: segments-ai:samples
-  name: Segments.ai Samples API
-  tags:
-  - Samples
-  - Assets
-  - Images
-  - Point Clouds
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.segments.ai/reference/api
-  baseURL: https://api.segments.ai
-  properties:
-  - url: https://docs.segments.ai/background/main-concepts
-    type: Documentation
-  - url: https://docs.segments.ai/reference/api
-    type: APIReference
-  - url: openapi/segments-ai-openapi.yml
-    type: OpenAPI
-  - url: collections/segments-ai.postman_collection.json
-    type: PostmanCollection
-  - url: collections/segments-ai.opencollection.json
-    type: OpenCollection
-  description: Manage the individual items to be labeled within a dataset - images,
-    point clouds, and multi-sensor sequences - with attributes, metadata, and
-    labeling priority.
-- aid: segments-ai:labels
+  - type: OpenAPI
+    url: openapi/segments-ai-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.segments.ai/background/main-concepts
+  - type: APIReference
+    url: https://docs.segments.ai/reference/api
+  - type: PostmanCollection
+    url: collections/segments-ai.postman_collection.json
+  - type: OpenCollection
+    url: collections/segments-ai.opencollection.json
+  - type: GitHub
+    url: https://github.com/segments-ai/segments-ai
+- aid: segments-ai:segments-ai-labels-api
   name: Segments.ai Labels API
+  description: The Labels API from Segments.ai — 1 operation(s) for labels.
+  humanURL: https://docs.segments.ai/reference/api
+  baseURL: https://api.segments.ai
   tags:
   - Labels
-  - Annotations
-  - Ground Truth
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  properties:
+  - type: OpenAPI
+    url: openapi/segments-ai-labels-api-openapi.yml
+  - type: Documentation
+    url: https://docs.segments.ai/background/main-concepts
+  - type: APIReference
+    url: https://docs.segments.ai/reference/api
+  - type: PostmanCollection
+    url: collections/segments-ai.postman_collection.json
+  - type: OpenCollection
+    url: collections/segments-ai.opencollection.json
+  - type: GitHub
+    url: https://github.com/segments-ai/segments-ai
+- aid: segments-ai:segments-ai-labelsets-api
+  name: Segments.ai Labelsets API
+  description: The Labelsets API from Segments.ai — 2 operation(s) for labelsets.
   humanURL: https://docs.segments.ai/reference/api
   baseURL: https://api.segments.ai
-  properties:
-  - url: https://docs.segments.ai/background/main-concepts
-    type: Documentation
-  - url: https://docs.segments.ai/reference/api
-    type: APIReference
-  - url: openapi/segments-ai-openapi.yml
-    type: OpenAPI
-  - url: collections/segments-ai.postman_collection.json
-    type: PostmanCollection
-  - url: collections/segments-ai.opencollection.json
-    type: OpenCollection
-  description: Create, retrieve, update, and delete the annotation labels attached
-    to a sample for a given labelset, with label status (LABELED, REVIEWED,
-    REJECTED, PRELABELED, SKIPPED), attributes, and model score.
-- aid: segments-ai:labelsets
-  name: Segments.ai Labelsets API
   tags:
   - Labelsets
-  - Predictions
-  - Ground Truth
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  properties:
+  - type: OpenAPI
+    url: openapi/segments-ai-labelsets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.segments.ai/background/main-concepts
+  - type: APIReference
+    url: https://docs.segments.ai/reference/api
+  - type: PostmanCollection
+    url: collections/segments-ai.postman_collection.json
+  - type: OpenCollection
+    url: collections/segments-ai.opencollection.json
+  - type: GitHub
+    url: https://github.com/segments-ai/segments-ai
+- aid: segments-ai:segments-ai-releases-api
+  name: Segments.ai Releases API
+  description: The Releases API from Segments.ai — 2 operation(s) for releases.
   humanURL: https://docs.segments.ai/reference/api
   baseURL: https://api.segments.ai
-  properties:
-  - url: https://docs.segments.ai/background/main-concepts
-    type: Documentation
-  - url: https://docs.segments.ai/reference/api
-    type: APIReference
-  - url: openapi/segments-ai-openapi.yml
-    type: OpenAPI
-  - url: collections/segments-ai.postman_collection.json
-    type: PostmanCollection
-  - url: collections/segments-ai.opencollection.json
-    type: OpenCollection
-  description: Manage labelsets within a dataset - named groups of labels such as
-    ground-truth or model predictions - allowing multiple parallel annotation
-    sets per sample.
-- aid: segments-ai:releases
-  name: Segments.ai Releases API
   tags:
   - Releases
-  - Versioning
-  - Export
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  properties:
+  - type: OpenAPI
+    url: openapi/segments-ai-releases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.segments.ai/background/main-concepts
+  - type: APIReference
+    url: https://docs.segments.ai/reference/api
+  - type: PostmanCollection
+    url: collections/segments-ai.postman_collection.json
+  - type: OpenCollection
+    url: collections/segments-ai.opencollection.json
+  - type: GitHub
+    url: https://github.com/segments-ai/segments-ai
+- aid: segments-ai:segments-ai-samples-api
+  name: Segments.ai Samples API
+  description: The Samples API from Segments.ai — 2 operation(s) for samples.
   humanURL: https://docs.segments.ai/reference/api
   baseURL: https://api.segments.ai
+  tags:
+  - Samples
   properties:
-  - url: https://docs.segments.ai/background/main-concepts
-    type: Documentation
-  - url: https://docs.segments.ai/reference/api
-    type: APIReference
-  - url: openapi/segments-ai-openapi.yml
-    type: OpenAPI
-  - url: collections/segments-ai.postman_collection.json
-    type: PostmanCollection
-  - url: collections/segments-ai.opencollection.json
-    type: OpenCollection
-  description: Create, list, retrieve, and delete versioned, immutable snapshots
-    of a dataset's labels for export and reproducible ML training.
+  - type: OpenAPI
+    url: openapi/segments-ai-samples-api-openapi.yml
+  - type: Documentation
+    url: https://docs.segments.ai/background/main-concepts
+  - type: APIReference
+    url: https://docs.segments.ai/reference/api
+  - type: PostmanCollection
+    url: collections/segments-ai.postman_collection.json
+  - type: OpenCollection
+    url: collections/segments-ai.opencollection.json
+  - type: GitHub
+    url: https://github.com/segments-ai/segments-ai
 common:
 - type: AgenticAccess
   url: agentic-access/segments-ai-agentic-access.yml
