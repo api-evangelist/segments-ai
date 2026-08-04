@@ -1,0 +1,22 @@
+{
+  "provider": "segments-ai",
+  "sources": [
+    "segments-ai-datasets-api-openapi.yml",
+    "segments-ai-labels-api-openapi.yml",
+    "segments-ai-labelsets-api-openapi.yml",
+    "segments-ai-releases-api-openapi.yml",
+    "segments-ai-samples-api-openapi.yml"
+  ],
+  "outputs": [
+    "segments-ai-datasets-api-openapi.yml",
+    "segments-ai-labels-api-openapi.yml",
+    "segments-ai-labelsets-api-openapi.yml",
+    "segments-ai-releases-api-openapi.yml",
+    "segments-ai-samples-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

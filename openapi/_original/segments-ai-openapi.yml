@@ -1,0 +1,825 @@
+openapi: 3.0.1
+info:
+  title: Segments.ai API
+  description: >-
+    REST API for the Segments.ai data-labeling platform for computer vision.
+    Manage datasets, samples, labels, labelsets, and versioned releases for
+    2D image segmentation/vectors and 3D point cloud and multi-sensor fusion
+    annotation. Authenticate by sending an API key in the Authorization header
+    as `Authorization: APIKey YOUR_API_KEY`.
+  termsOfService: https://segments.ai/terms
+  contact:
+    name: Segments.ai Support
+    url: https://docs.segments.ai
+  version: '1.0'
+servers:
+  - url: https://api.segments.ai
+components:
+  securitySchemes:
+    APIKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        Send your API key in the Authorization header using the value
+        `APIKey YOUR_API_KEY`. Keys are generated in the Segments.ai account
+        settings.
+  schemas:
+    Dataset:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the dataset.
+        full_name:
+          type: string
+          description: Owner-qualified name, e.g. owner/dataset.
+        description:
+          type: string
+        category:
+          type: string
+          description: Dataset category, e.g. street_scenery, garden, other.
+        task_type:
+          type: string
+          description: Labeling task type for the dataset.
+          enum:
+            - segmentation-bitmap
+            - segmentation-bitmap-highres
+            - image-segmentation-sequence
+            - bboxes
+            - vector
+            - image-vector-sequence
+            - pointcloud-cuboid
+            - pointcloud-cuboid-sequence
+            - pointcloud-segmentation
+            - pointcloud-segmentation-sequence
+            - pointcloud-vector
+            - pointcloud-vector-sequence
+            - multisensor-sequence
+        task_attributes:
+          type: object
+          description: Task configuration including label categories and attributes.
+        public:
+          type: boolean
+        readme:
+          type: string
+        enable_skip_labeling:
+          type: boolean
+        enable_skip_reviewing:
+          type: boolean
+        enable_ratings:
+          type: boolean
+        owner:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+    DatasetCreate:
+      type: object
+      required:
+        - name
+        - task_type
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        task_type:
+          type: string
+        task_attributes:
+          type: object
+        public:
+          type: boolean
+        readme:
+          type: string
+        enable_skip_labeling:
+          type: boolean
+        enable_skip_reviewing:
+          type: boolean
+        enable_ratings:
+          type: boolean
+    Collaborator:
+      type: object
+      required:
+        - user
+      properties:
+        user:
+          type: string
+          description: Username of the collaborator to add.
+        role:
+          type: string
+          description: Collaborator role.
+          enum:
+            - labeler
+            - reviewer
+            - manager
+            - admin
+    Sample:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        attributes:
+          type: object
+          description: Sample data such as image URL(s) or point cloud reference.
+        metadata:
+          type: object
+        priority:
+          type: number
+          description: Labeling priority; higher values are labeled first.
+        created_at:
+          type: string
+          format: date-time
+    SampleCreate:
+      type: object
+      required:
+        - name
+        - attributes
+      properties:
+        name:
+          type: string
+        attributes:
+          type: object
+        metadata:
+          type: object
+        priority:
+          type: number
+    Label:
+      type: object
+      properties:
+        sample_uuid:
+          type: string
+          format: uuid
+        labelset:
+          type: string
+        label_type:
+          type: string
+        label_status:
+          type: string
+          enum:
+            - LABELED
+            - REVIEWED
+            - REJECTED
+            - PRELABELED
+            - SKIPPED
+        attributes:
+          type: object
+          description: The annotation payload (segmentation, vectors, cuboids, etc.).
+        score:
+          type: number
+          description: Optional model confidence score for prelabels.
+        created_at:
+          type: string
+          format: date-time
+    LabelUpsert:
+      type: object
+      required:
+        - attributes
+      properties:
+        attributes:
+          type: object
+        label_status:
+          type: string
+          enum:
+            - LABELED
+            - REVIEWED
+            - REJECTED
+            - PRELABELED
+            - SKIPPED
+        score:
+          type: number
+    Labelset:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        is_groundtruth:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+    LabelsetCreate:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    Release:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        attributes:
+          type: object
+          description: Release metadata including the signed download URL of the export.
+        created_at:
+          type: string
+          format: date-time
+    ReleaseCreate:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+security:
+  - APIKey: []
+paths:
+  /user/datasets:
+    get:
+      operationId: listMyDatasets
+      tags:
+        - Datasets
+      summary: List the authenticated user's datasets.
+      responses:
+        '200':
+          description: A list of datasets.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Dataset'
+    post:
+      operationId: createDataset
+      tags:
+        - Datasets
+      summary: Create a new dataset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatasetCreate'
+      responses:
+        '201':
+          description: The created dataset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+  /users/{owner}/datasets:
+    get:
+      operationId: listUserDatasets
+      tags:
+        - Datasets
+      summary: List the datasets owned by a given user or organization.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of datasets.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Dataset'
+  /datasets/{owner}/{dataset}:
+    get:
+      operationId: getDataset
+      tags:
+        - Datasets
+      summary: Retrieve a single dataset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The dataset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+    patch:
+      operationId: updateDataset
+      tags:
+        - Datasets
+      summary: Update a dataset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatasetCreate'
+      responses:
+        '200':
+          description: The updated dataset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+    delete:
+      operationId: deleteDataset
+      tags:
+        - Datasets
+      summary: Delete a dataset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Dataset deleted.
+  /datasets/{owner}/{dataset}/collaborators:
+    post:
+      operationId: addCollaborator
+      tags:
+        - Datasets
+      summary: Add a collaborator to a dataset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Collaborator'
+      responses:
+        '201':
+          description: The added collaborator.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collaborator'
+  /datasets/{owner}/{dataset}/samples:
+    get:
+      operationId: listSamples
+      tags:
+        - Samples
+      summary: List the samples in a dataset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: label_status
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of samples.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sample'
+    post:
+      operationId: createSample
+      tags:
+        - Samples
+      summary: Create a sample in a dataset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SampleCreate'
+      responses:
+        '201':
+          description: The created sample.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample'
+  /samples/{sample_uuid}:
+    get:
+      operationId: getSample
+      tags:
+        - Samples
+      summary: Retrieve a single sample.
+      parameters:
+        - name: sample_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: The sample.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample'
+    patch:
+      operationId: updateSample
+      tags:
+        - Samples
+      summary: Update a sample.
+      parameters:
+        - name: sample_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SampleCreate'
+      responses:
+        '200':
+          description: The updated sample.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample'
+    delete:
+      operationId: deleteSample
+      tags:
+        - Samples
+      summary: Delete a sample.
+      parameters:
+        - name: sample_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Sample deleted.
+  /labels/{sample_uuid}/{labelset}:
+    get:
+      operationId: getLabel
+      tags:
+        - Labels
+      summary: Retrieve the label for a sample in a given labelset.
+      parameters:
+        - name: sample_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: labelset
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The label.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Label'
+    put:
+      operationId: upsertLabel
+      tags:
+        - Labels
+      summary: Create or update the label for a sample in a given labelset.
+      parameters:
+        - name: sample_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: labelset
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelUpsert'
+      responses:
+        '200':
+          description: The created or updated label.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Label'
+    delete:
+      operationId: deleteLabel
+      tags:
+        - Labels
+      summary: Delete the label for a sample in a given labelset.
+      parameters:
+        - name: sample_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: labelset
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Label deleted.
+  /datasets/{owner}/{dataset}/labelsets:
+    get:
+      operationId: listLabelsets
+      tags:
+        - Labelsets
+      summary: List the labelsets in a dataset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of labelsets.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Labelset'
+    post:
+      operationId: createLabelset
+      tags:
+        - Labelsets
+      summary: Create a labelset in a dataset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelsetCreate'
+      responses:
+        '201':
+          description: The created labelset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Labelset'
+  /datasets/{owner}/{dataset}/labelsets/{name}:
+    get:
+      operationId: getLabelset
+      tags:
+        - Labelsets
+      summary: Retrieve a single labelset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The labelset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Labelset'
+    delete:
+      operationId: deleteLabelset
+      tags:
+        - Labelsets
+      summary: Delete a labelset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Labelset deleted.
+  /datasets/{owner}/{dataset}/releases:
+    get:
+      operationId: listReleases
+      tags:
+        - Releases
+      summary: List the releases of a dataset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of releases.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Release'
+    post:
+      operationId: createRelease
+      tags:
+        - Releases
+      summary: Create a release (immutable snapshot) of a dataset.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReleaseCreate'
+      responses:
+        '201':
+          description: The created release.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Release'
+  /datasets/{owner}/{dataset}/releases/{release_name}:
+    get:
+      operationId: getRelease
+      tags:
+        - Releases
+      summary: Retrieve a single release.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: release_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The release.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Release'
+    delete:
+      operationId: deleteRelease
+      tags:
+        - Releases
+      summary: Delete a release.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: release_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Release deleted.
