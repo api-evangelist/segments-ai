@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segments.ai Datasets API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the authenticated user's datasets.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segments.ai/user/datasets"
+          },
+          "docs": "List the authenticated user's datasets."
+        },
+        {
+          "info": {
+            "name": "Create a new dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segments.ai/user/datasets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new dataset."
+        },
+        {
+          "info": {
+            "name": "List the datasets owned by a given user or organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segments.ai/users/:owner/datasets",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List the datasets owned by a given user or organization."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segments.ai/datasets/:owner/:dataset",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single dataset."
+        },
+        {
+          "info": {
+            "name": "Update a dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.segments.ai/datasets/:owner/:dataset",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a dataset."
+        },
+        {
+          "info": {
+            "name": "Delete a dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segments.ai/datasets/:owner/:dataset",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a dataset."
+        },
+        {
+          "info": {
+            "name": "Add a collaborator to a dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segments.ai/datasets/:owner/:dataset/collaborators",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a collaborator to a dataset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

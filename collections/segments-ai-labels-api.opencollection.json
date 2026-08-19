@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segments.ai Datasets Labels API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Labels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the label for a sample in a given labelset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segments.ai/labels/:sample_uuid/:labelset",
+            "params": [
+              {
+                "name": "sample_uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "labelset",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the label for a sample in a given labelset."
+        },
+        {
+          "info": {
+            "name": "Create or update the label for a sample in a given labelset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.segments.ai/labels/:sample_uuid/:labelset",
+            "params": [
+              {
+                "name": "sample_uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "labelset",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update the label for a sample in a given labelset."
+        },
+        {
+          "info": {
+            "name": "Delete the label for a sample in a given labelset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segments.ai/labels/:sample_uuid/:labelset",
+            "params": [
+              {
+                "name": "sample_uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "labelset",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete the label for a sample in a given labelset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

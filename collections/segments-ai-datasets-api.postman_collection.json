@@ -1,0 +1,789 @@
+{
+  "item": [
+    {
+      "id": "f81b0f5b-1bb2-4ecb-9364-0c942c6c9df5",
+      "name": "Datasets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "96009f86-1321-491a-99f3-a9b8794c3438",
+          "name": "List the authenticated user's datasets.",
+          "request": {
+            "name": "List the authenticated user's datasets.",
+            "description": {},
+            "url": {
+              "path": [
+                "user",
+                "datasets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd96401c-99c3-4939-a230-506b40c02bd9",
+              "name": "A list of datasets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "datasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"full_name\": \"string\",\n    \"description\": \"string\",\n    \"category\": \"string\",\n    \"task_type\": \"pointcloud-vector-sequence\",\n    \"task_attributes\": {},\n    \"public\": false,\n    \"readme\": \"string\",\n    \"enable_skip_labeling\": false,\n    \"enable_skip_reviewing\": true,\n    \"enable_ratings\": false,\n    \"owner\": {},\n    \"created_at\": \"1947-09-27T20:50:48.307Z\"\n  },\n  {\n    \"name\": \"string\",\n    \"full_name\": \"string\",\n    \"description\": \"string\",\n    \"category\": \"string\",\n    \"task_type\": \"vector\",\n    \"task_attributes\": {},\n    \"public\": false,\n    \"readme\": \"string\",\n    \"enable_skip_labeling\": true,\n    \"enable_skip_reviewing\": true,\n    \"enable_ratings\": false,\n    \"owner\": {},\n    \"created_at\": \"1976-10-12T05:32:12.826Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f566ab6-34f1-4dc2-8c2b-e6920cae9e13",
+          "name": "Create a new dataset.",
+          "request": {
+            "name": "Create a new dataset.",
+            "description": {},
+            "url": {
+              "path": [
+                "user",
+                "datasets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"task_type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"category\": \"<string>\",\n  \"task_attributes\": \"<object>\",\n  \"public\": \"<boolean>\",\n  \"readme\": \"<string>\",\n  \"enable_skip_labeling\": \"<boolean>\",\n  \"enable_skip_reviewing\": \"<boolean>\",\n  \"enable_ratings\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "38149c33-a2b3-465f-b17c-c831557efb37",
+              "name": "The created dataset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "datasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"task_type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"category\": \"<string>\",\n  \"task_attributes\": \"<object>\",\n  \"public\": \"<boolean>\",\n  \"readme\": \"<string>\",\n  \"enable_skip_labeling\": \"<boolean>\",\n  \"enable_skip_reviewing\": \"<boolean>\",\n  \"enable_ratings\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"full_name\": \"string\",\n  \"description\": \"string\",\n  \"category\": \"string\",\n  \"task_type\": \"segmentation-bitmap\",\n  \"task_attributes\": {},\n  \"public\": true,\n  \"readme\": \"string\",\n  \"enable_skip_labeling\": true,\n  \"enable_skip_reviewing\": false,\n  \"enable_ratings\": false,\n  \"owner\": {},\n  \"created_at\": \"1948-12-22T20:46:30.625Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ba801cd-17b0-4db7-bbcd-7ce6c3b0feea",
+          "name": "List the datasets owned by a given user or organization.",
+          "request": {
+            "name": "List the datasets owned by a given user or organization.",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":owner",
+                "datasets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb4e5490-690a-4e69-bdcb-72f02647aab6",
+              "name": "A list of datasets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":owner",
+                    "datasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"full_name\": \"string\",\n    \"description\": \"string\",\n    \"category\": \"string\",\n    \"task_type\": \"pointcloud-vector-sequence\",\n    \"task_attributes\": {},\n    \"public\": false,\n    \"readme\": \"string\",\n    \"enable_skip_labeling\": false,\n    \"enable_skip_reviewing\": true,\n    \"enable_ratings\": false,\n    \"owner\": {},\n    \"created_at\": \"1947-09-27T20:50:48.307Z\"\n  },\n  {\n    \"name\": \"string\",\n    \"full_name\": \"string\",\n    \"description\": \"string\",\n    \"category\": \"string\",\n    \"task_type\": \"vector\",\n    \"task_attributes\": {},\n    \"public\": false,\n    \"readme\": \"string\",\n    \"enable_skip_labeling\": true,\n    \"enable_skip_reviewing\": true,\n    \"enable_ratings\": false,\n    \"owner\": {},\n    \"created_at\": \"1976-10-12T05:32:12.826Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36e2a5bf-36dd-4a5c-84f1-f08e671db698",
+          "name": "Retrieve a single dataset.",
+          "request": {
+            "name": "Retrieve a single dataset.",
+            "description": {},
+            "url": {
+              "path": [
+                "datasets",
+                ":owner",
+                ":dataset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataset",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de3c0708-92a8-4528-b428-56649bc99caf",
+              "name": "The dataset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":owner",
+                    ":dataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataset",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"full_name\": \"string\",\n  \"description\": \"string\",\n  \"category\": \"string\",\n  \"task_type\": \"segmentation-bitmap\",\n  \"task_attributes\": {},\n  \"public\": true,\n  \"readme\": \"string\",\n  \"enable_skip_labeling\": true,\n  \"enable_skip_reviewing\": false,\n  \"enable_ratings\": false,\n  \"owner\": {},\n  \"created_at\": \"1948-12-22T20:46:30.625Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfdb62d8-840c-4756-96a8-36b2ccbc6256",
+          "name": "Update a dataset.",
+          "request": {
+            "name": "Update a dataset.",
+            "description": {},
+            "url": {
+              "path": [
+                "datasets",
+                ":owner",
+                ":dataset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataset",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"task_type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"category\": \"<string>\",\n  \"task_attributes\": \"<object>\",\n  \"public\": \"<boolean>\",\n  \"readme\": \"<string>\",\n  \"enable_skip_labeling\": \"<boolean>\",\n  \"enable_skip_reviewing\": \"<boolean>\",\n  \"enable_ratings\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "357ced56-2ccd-4526-b69a-2d25b0c324ae",
+              "name": "The updated dataset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":owner",
+                    ":dataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataset",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"task_type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"category\": \"<string>\",\n  \"task_attributes\": \"<object>\",\n  \"public\": \"<boolean>\",\n  \"readme\": \"<string>\",\n  \"enable_skip_labeling\": \"<boolean>\",\n  \"enable_skip_reviewing\": \"<boolean>\",\n  \"enable_ratings\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"full_name\": \"string\",\n  \"description\": \"string\",\n  \"category\": \"string\",\n  \"task_type\": \"segmentation-bitmap\",\n  \"task_attributes\": {},\n  \"public\": true,\n  \"readme\": \"string\",\n  \"enable_skip_labeling\": true,\n  \"enable_skip_reviewing\": false,\n  \"enable_ratings\": false,\n  \"owner\": {},\n  \"created_at\": \"1948-12-22T20:46:30.625Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5301f3e5-0b94-42f6-ac07-fb1286557e71",
+          "name": "Delete a dataset.",
+          "request": {
+            "name": "Delete a dataset.",
+            "description": {},
+            "url": {
+              "path": [
+                "datasets",
+                ":owner",
+                ":dataset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataset",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "028ba48e-95e2-44b7-8637-d93d4b6b96a4",
+              "name": "Dataset deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":owner",
+                    ":dataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataset",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca137a24-5370-423f-87ba-4f806ccfe021",
+          "name": "Add a collaborator to a dataset.",
+          "request": {
+            "name": "Add a collaborator to a dataset.",
+            "description": {},
+            "url": {
+              "path": [
+                "datasets",
+                ":owner",
+                ":dataset",
+                "collaborators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataset",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d508c54b-3e0c-4b39-8600-d9ca09fd2b05",
+              "name": "The added collaborator.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":owner",
+                    ":dataset",
+                    "collaborators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataset",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.segments.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "96a185b3-2982-4d6d-8c26-3bf4dac97540",
+    "name": "Segments.ai Datasets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Segments.ai data-labeling platform for computer vision. Manage datasets, samples, labels, labelsets, and versioned releases for 2D image segmentation/vectors and 3D point cloud and multi-sensor fusion annotation. Authenticate by sending an API key in the Authorization header as `Authorization: APIKey YOUR_API_KEY`.\n\nContact Support:\n Name: Segments.ai Support",
+      "type": "text/plain"
+    }
+  }
+}

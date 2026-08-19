@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segments.ai Datasets Labelsets API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Labelsets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the labelsets in a dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segments.ai/datasets/:owner/:dataset/labelsets",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List the labelsets in a dataset."
+        },
+        {
+          "info": {
+            "name": "Create a labelset in a dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segments.ai/datasets/:owner/:dataset/labelsets",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a labelset in a dataset."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single labelset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segments.ai/datasets/:owner/:dataset/labelsets/:name",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single labelset."
+        },
+        {
+          "info": {
+            "name": "Delete a labelset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segments.ai/datasets/:owner/:dataset/labelsets/:name",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a labelset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

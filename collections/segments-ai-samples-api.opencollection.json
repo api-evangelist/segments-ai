@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segments.ai Datasets Samples API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Samples",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the samples in a dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segments.ai/datasets/:owner/:dataset/samples",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "label_status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List the samples in a dataset."
+        },
+        {
+          "info": {
+            "name": "Create a sample in a dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segments.ai/datasets/:owner/:dataset/samples",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a sample in a dataset."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single sample.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segments.ai/samples/:sample_uuid",
+            "params": [
+              {
+                "name": "sample_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single sample."
+        },
+        {
+          "info": {
+            "name": "Update a sample.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.segments.ai/samples/:sample_uuid",
+            "params": [
+              {
+                "name": "sample_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a sample."
+        },
+        {
+          "info": {
+            "name": "Delete a sample.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segments.ai/samples/:sample_uuid",
+            "params": [
+              {
+                "name": "sample_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a sample."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
