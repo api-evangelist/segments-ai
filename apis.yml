@@ -95,6 +95,8 @@ apis:
   humanURL: https://docs.segments.ai/reference/api
   baseURL: https://api.segments.ai
   tags:
+  - Label Sets
+  tags_raw:
   - Labelsets
   properties:
   - type: OpenAPI
