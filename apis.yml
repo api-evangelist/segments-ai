@@ -90,28 +90,6 @@ apis:
     url: collections/segments-ai.opencollection.json
   - type: GitHub
     url: https://github.com/segments-ai/segments-ai
-- aid: segments-ai:segments-ai-labelsets-api
-  name: Segments.ai Labelsets API
-  description: The Labelsets API from Segments.ai — 2 operation(s) for labelsets.
-  humanURL: https://docs.segments.ai/reference/api
-  baseURL: https://api.segments.ai
-  tags:
-  - Label Sets
-  tags_raw:
-  - Labelsets
-  properties:
-  - type: OpenAPI
-    url: openapi/segments-ai-labelsets-api-openapi.yml
-  - type: Documentation
-    url: https://docs.segments.ai/background/main-concepts
-  - type: APIReference
-    url: https://docs.segments.ai/reference/api
-  - type: PostmanCollection
-    url: collections/segments-ai.postman_collection.json
-  - type: OpenCollection
-    url: collections/segments-ai.opencollection.json
-  - type: GitHub
-    url: https://github.com/segments-ai/segments-ai
 - aid: segments-ai:segments-ai-releases-api
   name: Segments.ai Releases API
   description: The Releases API from Segments.ai — 2 operation(s) for releases.
@@ -142,6 +120,26 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/segments-ai-samples-api-openapi.yml
+  - type: Documentation
+    url: https://docs.segments.ai/background/main-concepts
+  - type: APIReference
+    url: https://docs.segments.ai/reference/api
+  - type: PostmanCollection
+    url: collections/segments-ai.postman_collection.json
+  - type: OpenCollection
+    url: collections/segments-ai.opencollection.json
+  - type: GitHub
+    url: https://github.com/segments-ai/segments-ai
+- aid: segments-ai:segments-ai-label-sets-api
+  name: Segments.ai Label Sets API
+  description: The Label Sets API from Segments.ai — 2 operation(s) for label sets.
+  humanURL: https://docs.segments.ai/reference/api
+  baseURL: https://api.segments.ai
+  tags:
+  - Label Sets
+  properties:
+  - type: OpenAPI
+    url: openapi/segments-ai-label-sets-api-openapi.yml
   - type: Documentation
     url: https://docs.segments.ai/background/main-concepts
   - type: APIReference
