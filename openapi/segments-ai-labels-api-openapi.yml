@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Segments.ai Datasets Labels API
+  title: Segments.ai Labels API
   description: 'REST API for the Segments.ai data-labeling platform for computer vision. Manage datasets, samples, labels, labelsets, and versioned releases for 2D image segmentation/vectors and 3D point cloud and multi-sensor fusion annotation. Authenticate by sending an API key in the Authorization header as `Authorization: APIKey YOUR_API_KEY`.'
   termsOfService: https://segments.ai/terms
   contact:
@@ -19,7 +19,7 @@ paths:
       operationId: getLabel
       tags:
       - Labels
-      summary: Retrieve the label for a sample in a given labelset.
+      summary: Retrieve the label for a sample in a given labelset
       parameters:
       - name: sample_uuid
         in: path
@@ -43,7 +43,7 @@ paths:
       operationId: upsertLabel
       tags:
       - Labels
-      summary: Create or update the label for a sample in a given labelset.
+      summary: Create or update the label for a sample in a given labelset
       parameters:
       - name: sample_uuid
         in: path
@@ -73,7 +73,7 @@ paths:
       operationId: deleteLabel
       tags:
       - Labels
-      summary: Delete the label for a sample in a given labelset.
+      summary: Delete the label for a sample in a given labelset
       parameters:
       - name: sample_uuid
         in: path
@@ -91,6 +91,23 @@ paths:
           description: Label deleted.
 components:
   schemas:
+    LabelUpsert:
+      type: object
+      required:
+      - attributes
+      properties:
+        attributes:
+          type: object
+        label_status:
+          type: string
+          enum:
+          - LABELED
+          - REVIEWED
+          - REJECTED
+          - PRELABELED
+          - SKIPPED
+        score:
+          type: number
     Label:
       type: object
       properties:
@@ -118,23 +135,6 @@ components:
         created_at:
           type: string
           format: date-time
-    LabelUpsert:
-      type: object
-      required:
-      - attributes
-      properties:
-        attributes:
-          type: object
-        label_status:
-          type: string
-          enum:
-          - LABELED
-          - REVIEWED
-          - REJECTED
-          - PRELABELED
-          - SKIPPED
-        score:
-          type: number
   securitySchemes:
     APIKey:
       type: apiKey

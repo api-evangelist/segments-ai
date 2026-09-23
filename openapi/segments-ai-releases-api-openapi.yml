@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Segments.ai Datasets Releases API
+  title: Segments.ai Releases API
   description: 'REST API for the Segments.ai data-labeling platform for computer vision. Manage datasets, samples, labels, labelsets, and versioned releases for 2D image segmentation/vectors and 3D point cloud and multi-sensor fusion annotation. Authenticate by sending an API key in the Authorization header as `Authorization: APIKey YOUR_API_KEY`.'
   termsOfService: https://segments.ai/terms
   contact:
@@ -19,7 +19,7 @@ paths:
       operationId: listReleases
       tags:
       - Releases
-      summary: List the releases of a dataset.
+      summary: List the releases of a dataset
       parameters:
       - name: owner
         in: path
@@ -44,7 +44,7 @@ paths:
       operationId: createRelease
       tags:
       - Releases
-      summary: Create a release (immutable snapshot) of a dataset.
+      summary: Create a release (immutable snapshot) of a dataset
       parameters:
       - name: owner
         in: path
@@ -74,7 +74,7 @@ paths:
       operationId: getRelease
       tags:
       - Releases
-      summary: Retrieve a single release.
+      summary: Retrieve a single release
       parameters:
       - name: owner
         in: path
@@ -102,7 +102,7 @@ paths:
       operationId: deleteRelease
       tags:
       - Releases
-      summary: Delete a release.
+      summary: Delete a release
       parameters:
       - name: owner
         in: path

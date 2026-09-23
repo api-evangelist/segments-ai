@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Segments.ai Datasets Samples API
+  title: Segments.ai Samples API
   description: 'REST API for the Segments.ai data-labeling platform for computer vision. Manage datasets, samples, labels, labelsets, and versioned releases for 2D image segmentation/vectors and 3D point cloud and multi-sensor fusion annotation. Authenticate by sending an API key in the Authorization header as `Authorization: APIKey YOUR_API_KEY`.'
   termsOfService: https://segments.ai/terms
   contact:
@@ -19,7 +19,7 @@ paths:
       operationId: listSamples
       tags:
       - Samples
-      summary: List the samples in a dataset.
+      summary: List the samples in a dataset
       parameters:
       - name: owner
         in: path
@@ -59,7 +59,7 @@ paths:
       operationId: createSample
       tags:
       - Samples
-      summary: Create a sample in a dataset.
+      summary: Create a sample in a dataset
       parameters:
       - name: owner
         in: path
@@ -89,7 +89,7 @@ paths:
       operationId: getSample
       tags:
       - Samples
-      summary: Retrieve a single sample.
+      summary: Retrieve a single sample
       parameters:
       - name: sample_uuid
         in: path
@@ -108,7 +108,7 @@ paths:
       operationId: updateSample
       tags:
       - Samples
-      summary: Update a sample.
+      summary: Update a sample
       parameters:
       - name: sample_uuid
         in: path
@@ -133,7 +133,7 @@ paths:
       operationId: deleteSample
       tags:
       - Samples
-      summary: Delete a sample.
+      summary: Delete a sample
       parameters:
       - name: sample_uuid
         in: path

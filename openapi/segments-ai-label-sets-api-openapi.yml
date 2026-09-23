@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Segments.ai Datasets Labelsets API
+  title: Segments.ai Labelsets API
   description: 'REST API for the Segments.ai data-labeling platform for computer vision. Manage datasets, samples, labels, labelsets, and versioned releases for 2D image segmentation/vectors and 3D point cloud and multi-sensor fusion annotation. Authenticate by sending an API key in the Authorization header as `Authorization: APIKey YOUR_API_KEY`.'
   termsOfService: https://segments.ai/terms
   contact:
@@ -12,14 +12,14 @@ servers:
 security:
 - APIKey: []
 tags:
-- name: Labelsets
+- name: Label Sets
 paths:
   /datasets/{owner}/{dataset}/labelsets:
     get:
       operationId: listLabelsets
       tags:
-      - Labelsets
-      summary: List the labelsets in a dataset.
+      - Label Sets
+      summary: List the labelsets in a dataset
       parameters:
       - name: owner
         in: path
@@ -43,8 +43,8 @@ paths:
     post:
       operationId: createLabelset
       tags:
-      - Labelsets
-      summary: Create a labelset in a dataset.
+      - Label Sets
+      summary: Create a labelset in a dataset
       parameters:
       - name: owner
         in: path
@@ -73,8 +73,8 @@ paths:
     get:
       operationId: getLabelset
       tags:
-      - Labelsets
-      summary: Retrieve a single labelset.
+      - Label Sets
+      summary: Retrieve a single labelset
       parameters:
       - name: owner
         in: path
@@ -101,8 +101,8 @@ paths:
     delete:
       operationId: deleteLabelset
       tags:
-      - Labelsets
-      summary: Delete a labelset.
+      - Label Sets
+      summary: Delete a labelset
       parameters:
       - name: owner
         in: path
