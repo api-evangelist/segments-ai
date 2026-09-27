@@ -188,6 +188,32 @@ components:
           - reviewer
           - manager
           - admin
+    DatasetCreate:
+      type: object
+      required:
+      - name
+      - task_type
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        task_type:
+          type: string
+        task_attributes:
+          type: object
+        public:
+          type: boolean
+        readme:
+          type: string
+        enable_skip_labeling:
+          type: boolean
+        enable_skip_reviewing:
+          type: boolean
+        enable_ratings:
+          type: boolean
     Dataset:
       type: object
       properties:
@@ -237,32 +263,6 @@ components:
         created_at:
           type: string
           format: date-time
-    DatasetCreate:
-      type: object
-      required:
-      - name
-      - task_type
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        category:
-          type: string
-        task_type:
-          type: string
-        task_attributes:
-          type: object
-        public:
-          type: boolean
-        readme:
-          type: string
-        enable_skip_labeling:
-          type: boolean
-        enable_skip_reviewing:
-          type: boolean
-        enable_ratings:
-          type: boolean
   securitySchemes:
     APIKey:
       type: apiKey

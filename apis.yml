@@ -8,16 +8,22 @@ description: Segments.ai is a data-labeling platform for computer vision, suppor
   labelsets, and versioned releases programmatically for building training data
   pipelines.
 deliveryModel:
-  model: saas
-  open_source: false
+  model: open-core
+  license: MIT
+  license_evidence:
+    repo: segments-ai/segments-ai
+    spdx: MIT
+    stars: 28
+  open_source: true
   commercial: true
   callable_host: true
-  label: Hosted service · you call their endpoint
-  confidence: high
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: medium
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: paid
@@ -36,16 +42,18 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/segments-ai.png
 tags:
 - Data Labeling
-- Computer-Vision
+- Computer Vision
 - Point Cloud
 - Annotation
-- Machine-Learning
+- Machine Learning
 tags_raw:
 - Data Labeling
 - Computer Vision
 - Point Cloud
 - Annotation
 - Machine Learning
+- Computer-Vision
+- Machine-Learning
 created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.23'
