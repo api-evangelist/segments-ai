@@ -146,6 +146,20 @@ paths:
           description: Sample deleted.
 components:
   schemas:
+    SampleCreate:
+      type: object
+      required:
+      - name
+      - attributes
+      properties:
+        name:
+          type: string
+        attributes:
+          type: object
+        metadata:
+          type: object
+        priority:
+          type: number
     Sample:
       type: object
       properties:
@@ -165,20 +179,6 @@ components:
         created_at:
           type: string
           format: date-time
-    SampleCreate:
-      type: object
-      required:
-      - name
-      - attributes
-      properties:
-        name:
-          type: string
-        attributes:
-          type: object
-        metadata:
-          type: object
-        priority:
-          type: number
   securitySchemes:
     APIKey:
       type: apiKey

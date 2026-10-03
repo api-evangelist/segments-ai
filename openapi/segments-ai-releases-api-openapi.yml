@@ -124,6 +124,15 @@ paths:
           description: Release deleted.
 components:
   schemas:
+    ReleaseCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
     Release:
       type: object
       properties:
@@ -139,15 +148,6 @@ components:
         created_at:
           type: string
           format: date-time
-    ReleaseCreate:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
   securitySchemes:
     APIKey:
       type: apiKey
