@@ -124,15 +124,6 @@ paths:
           description: Labelset deleted.
 components:
   schemas:
-    LabelsetCreate:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
     Labelset:
       type: object
       properties:
@@ -145,6 +136,15 @@ components:
         created_at:
           type: string
           format: date-time
+    LabelsetCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
   securitySchemes:
     APIKey:
       type: apiKey

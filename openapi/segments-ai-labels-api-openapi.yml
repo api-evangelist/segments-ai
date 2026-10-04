@@ -91,6 +91,23 @@ paths:
           description: Label deleted.
 components:
   schemas:
+    LabelUpsert:
+      type: object
+      required:
+      - attributes
+      properties:
+        attributes:
+          type: object
+        label_status:
+          type: string
+          enum:
+          - LABELED
+          - REVIEWED
+          - REJECTED
+          - PRELABELED
+          - SKIPPED
+        score:
+          type: number
     Label:
       type: object
       properties:
@@ -118,23 +135,6 @@ components:
         created_at:
           type: string
           format: date-time
-    LabelUpsert:
-      type: object
-      required:
-      - attributes
-      properties:
-        attributes:
-          type: object
-        label_status:
-          type: string
-          enum:
-          - LABELED
-          - REVIEWED
-          - REJECTED
-          - PRELABELED
-          - SKIPPED
-        score:
-          type: number
   securitySchemes:
     APIKey:
       type: apiKey
