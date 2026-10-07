@@ -159,6 +159,8 @@ apis:
   - type: GitHub
     url: https://github.com/segments-ai/segments-ai
 common:
+- type: Pricing
+  url: https://segments.ai/pricing/
 - type: AgenticAccess
   url: agentic-access/segments-ai-agentic-access.yml
 - type: DomainSecurity
