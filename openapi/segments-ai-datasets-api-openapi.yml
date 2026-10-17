@@ -172,22 +172,6 @@ paths:
                 $ref: '#/components/schemas/Collaborator'
 components:
   schemas:
-    Collaborator:
-      type: object
-      required:
-      - user
-      properties:
-        user:
-          type: string
-          description: Username of the collaborator to add.
-        role:
-          type: string
-          description: Collaborator role.
-          enum:
-          - labeler
-          - reviewer
-          - manager
-          - admin
     DatasetCreate:
       type: object
       required:
@@ -214,6 +198,22 @@ components:
           type: boolean
         enable_ratings:
           type: boolean
+    Collaborator:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          type: string
+          description: Username of the collaborator to add.
+        role:
+          type: string
+          description: Collaborator role.
+          enum:
+          - labeler
+          - reviewer
+          - manager
+          - admin
     Dataset:
       type: object
       properties:
