@@ -1,0 +1,33 @@
+generated: '2026-10-23'
+method: searched
+checked:
+- hugging-face/integrations/hugging-face-integration-edges.yml
+source:
+- hugging-face/integrations/hugging-face-integration-edges.yml
+edges:
+- partner_name: Hugging Face (hugging-face-hub)
+  partner: hugging-face
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: hugging-face-hub
+  evidence: https://huggingface.co/segments
+  mirror_of: hugging-face/integrations/hugging-face-integration-edges.yml
+  apps:
+  - segments/sidewalk-semantic
+  - segments/panoptic-segment-anything
+  - segments/segment-anything-image-embedding
+  - segments/point-cloud-cuboid-prediction
+  - segments/count-by-class
+  - segments/image-seg-project-to-next-frame
+  - segments/upload-label
+  - segments/add-users-from-csv
+  listing_count: 2
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Hugging Face Hub datasets
+  badges:
+  - Verified publisher (Hugging Face verified organisation)
