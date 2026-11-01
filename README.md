@@ -1,4 +1,4 @@
-# Segments.ai (segments-ai)
+# Segments.ai
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,141 +66,125 @@
 
 Segments.ai is a data-labeling platform for computer vision, supporting 2D image segmentation and vectors as well as 3D point cloud and multi-sensor fusion annotation. Its REST API and Python SDK let teams manage datasets, samples, labels, labelsets, and versioned releases programmatically for building training data pipelines.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/segments-ai/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/segments-ai/refs/heads/main/apis.yml)
+**Areas:** Data Labeling · Computer Vision · Point Cloud · Annotation · Machine Learning
 
-## Tags
+## Segments.ai on APIs.io
 
-- Data Labeling
-- Computer Vision
-- Point Cloud
-- Annotation
-- Machine Learning
+Everything profiled for Segments.ai is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/segments-ai/](https://apis.io/providers/segments-ai/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (5)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Segments.ai Datasets API](https://apis.io/apis/segments-ai/segments-ai-datasets-api/) — The Datasets API from Segments.ai — 4 operation(s) for datasets.
+- [Segments.ai Labels API](https://apis.io/apis/segments-ai/segments-ai-labels-api/) — The Labels API from Segments.ai — 1 operation(s) for labels.
+- [Segments.ai Releases API](https://apis.io/apis/segments-ai/segments-ai-releases-api/) — The Releases API from Segments.ai — 2 operation(s) for releases.
+- [Segments.ai Samples API](https://apis.io/apis/segments-ai/segments-ai-samples-api/) — The Samples API from Segments.ai — 2 operation(s) for samples.
+- [Segments.ai Label Sets API](https://apis.io/apis/segments-ai/segments-ai-label-sets-api/) — The Label Sets API from Segments.ai — 2 operation(s) for label sets.
 
-## APIs
+### Published properties
 
-### Segments.ai Datasets API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Create, list, retrieve, update, and delete labeling datasets, including their task type (image segmentation, vectors, point cloud cuboid/segmentation, multi-sensor fusion), categories, task attributes, and collaborators.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.segments.ai/reference/api](https://docs.segments.ai/reference/api)
-- **Base URL:** `https://api.segments.ai`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Segments Ai Agentic Access](https://apis.io/agentic-access/segments-ai/segments-ai-agentic-access/)
 
-- Datasets
-- Projects
-- Computer Vision
+#### Collections (6)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.segments.ai/background/main-concepts)
-- [API Reference](https://docs.segments.ai/reference/api)
-- [OpenAPI](openapi/segments-ai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/segments-ai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/segments-ai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [GitHub](https://github.com/segments-ai/segments-ai)
+- [Segments.ai API](https://apis.io/collections/segments-ai/open-segments-ai/)
+- [Segments.ai Datasets API](https://apis.io/collections/segments-ai/open-segments-ai-datasets-api/)
+- [Segments.ai Datasets Labels API](https://apis.io/collections/segments-ai/open-segments-ai-labels-api/)
+- [Segments.ai Datasets Labelsets API](https://apis.io/collections/segments-ai/open-segments-ai-labelsets-api/)
+- [Segments.ai Datasets Releases API](https://apis.io/collections/segments-ai/open-segments-ai-releases-api/)
+- [Segments.ai Datasets Samples API](https://apis.io/collections/segments-ai/open-segments-ai-samples-api/)
 
-### Segments.ai Samples API
+#### Security (2)
 
-Manage the individual items to be labeled within a dataset - images, point clouds, and multi-sensor sequences - with attributes, metadata, and labeling priority.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.segments.ai/reference/api](https://docs.segments.ai/reference/api)
-- **Base URL:** `https://api.segments.ai`
+- [Segments Ai Authentication](https://apis.io/security/segments-ai/segments-ai-authentication/)
+- [Segments Ai Domain Security](https://apis.io/security/segments-ai/segments-ai-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Samples
-- Assets
-- Images
-- Point Clouds
+Published plans, tiers and prices.
 
-#### Properties
+- [Segments Ai Plans Pricing](https://apis.io/plans/segments-ai/segments-ai-plans-pricing/)
 
-- [Documentation](https://docs.segments.ai/background/main-concepts)
-- [API Reference](https://docs.segments.ai/reference/api)
-- [OpenAPI](openapi/segments-ai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/segments-ai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/segments-ai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Segments.ai Labels API
+Published request limits.
 
-Create, retrieve, update, and delete the annotation labels attached to a sample for a given labelset, with label status (LABELED, REVIEWED, REJECTED, PRELABELED, SKIPPED), attributes, and model score.
+- [Segments Ai Rate Limits](https://apis.io/rate-limits/segments-ai/segments-ai-rate-limits/)
 
-- **Human URL:** [https://docs.segments.ai/reference/api](https://docs.segments.ai/reference/api)
-- **Base URL:** `https://api.segments.ai`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Labels
-- Annotations
-- Ground Truth
+- [Segments Ai Finops](https://apis.io/finops/segments-ai/segments-ai-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.segments.ai/background/main-concepts)
-- [API Reference](https://docs.segments.ai/reference/api)
-- [OpenAPI](openapi/segments-ai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/segments-ai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/segments-ai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Segments.ai Labelsets API
-
-Manage labelsets within a dataset - named groups of labels such as ground-truth or model predictions - allowing multiple parallel annotation sets per sample.
-
-- **Human URL:** [https://docs.segments.ai/reference/api](https://docs.segments.ai/reference/api)
-- **Base URL:** `https://api.segments.ai`
-
-#### Tags
-
-- Labelsets
-- Predictions
-- Ground Truth
-
-#### Properties
-
-- [Documentation](https://docs.segments.ai/background/main-concepts)
-- [API Reference](https://docs.segments.ai/reference/api)
-- [OpenAPI](openapi/segments-ai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/segments-ai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/segments-ai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Segments.ai Releases API
-
-Create, list, retrieve, and delete versioned, immutable snapshots of a dataset's labels for export and reproducible ML training.
-
-- **Human URL:** [https://docs.segments.ai/reference/api](https://docs.segments.ai/reference/api)
-- **Base URL:** `https://api.segments.ai`
-
-#### Tags
-
-- Releases
-- Versioning
-- Export
-
-#### Properties
-
-- [Documentation](https://docs.segments.ai/background/main-concepts)
-- [API Reference](https://docs.segments.ai/reference/api)
-- [OpenAPI](openapi/segments-ai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/segments-ai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/segments-ai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/segments-ai)
-- [LinkedIn](https://www.linkedin.com/company/segments-ai)
 - [Website](https://segments.ai)
 - [Documentation](https://docs.segments.ai)
-- [Plans](plans/segments-ai-plans-pricing.yml)
-- [Rate Limits](rate-limits/segments-ai-rate-limits.yml)
-- [Fin Ops](finops/segments-ai-finops.yml)
+- [Pricing](https://segments.ai/pricing/)
+- [Blog](https://segments.ai/blog/)
+- [GitHub](https://github.com/segments-ai)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 34.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 44.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 42.1 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/segments-ai/](https://apis.io/providers/segments-ai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Segments.ai: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/segments-ai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
